@@ -1,0 +1,24 @@
+<div class="flex-container">
+    <div class="row">
+        <div class="col col-sm-8 board">
+            <div class="video">
+                <video autoplay play></video>
+            </div>
+
+            <button class="btn btn-success open" (click)="openVideo($event)">Open camera</button>
+        </div>
+        <div class="col col-sm-4 chat">
+            chat
+            <div class="screen">
+                <p style="margin: 5px;">{{escribir}}</p>
+            </div>
+            <div>
+                <label class="input-group-text">Escribe:
+                <input class="form-control" [(ngModel)]="escribir" placeholder="name"/>
+              </label>
+            </div>
+
+        </div>
+
+    </div>
+</div>

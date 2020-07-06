@@ -1,0 +1,10 @@
+h1 {
+    margin: 50px;
+    position: relative;
+    text-align: center;
+}
+
+form {
+    margin: 50px;
+    width: 100%;
+}

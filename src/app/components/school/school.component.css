@@ -1,0 +1,32 @@
+.board {
+    width: 100vw;
+    position: relative;
+    height: 100vh;
+    background: lightblue;
+}
+
+.video {
+    display: flex;
+    margin: 10%;
+    align-content: center;
+    justify-content: center;
+}
+
+.chat {
+    background: lightcoral;
+}
+
+.open {
+    display: flex;
+    margin: 10%;
+    align-content: center;
+    justify-content: center;
+}
+
+.screen {
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    background: white;
+    border-radius: 10px;
+}

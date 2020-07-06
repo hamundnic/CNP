@@ -1,0 +1,9 @@
+h1 {
+    margin: 50px;
+}
+
+form {
+    width: auto;
+    margin: 10%;
+    flex-direction: column;
+}
