@@ -1,32 +1,79 @@
-.board {
-    width: 100vw;
-    position: relative;
-    height: 100vh;
-    background: lightblue;
-}
-
-.video {
-    display: flex;
-    margin: 10%;
-    align-content: center;
-    justify-content: center;
-}
-
-.chat {
-    background: lightcoral;
-}
-
-.open {
-    display: flex;
-    margin: 10%;
-    align-content: center;
-    justify-content: center;
-}
-
-.screen {
-    width: 400px;
-    height: 400px;
-    margin: 10px;
-    background: white;
-    border-radius: 10px;
-}
+    .board {
+        width: 100vw;
+        position: relative;
+        height: 100vh;
+        background: lightblue;
+    }
+    
+    .chat {
+        background: lightcoral;
+    }
+    
+    .video>video {
+        width: 450px;
+        height: 450px;
+        border-radius: 5px;
+        margin: 5%;
+    }
+    
+    .video>.openCamera {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        height: 50px;
+        margin: 5%;
+        padding: 10px;
+    }
+    
+    .screen {
+        width: 400px;
+        height: 400px;
+        margin: 10px;
+        background: white;
+        border-radius: 10px;
+    }
+    
+    .chat-list {
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        height: 600px !important;
+    }
+    
+    textarea {
+        width: 100%;
+    }
+    
+    .cardSchool {
+        position: absolute;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        bottom: 10%;
+        background: whitesmoke;
+        width: 90%;
+        height: 150px;
+        margin: 0 0 2% 5%;
+        border-radius: 5px;
+    }
+    
+    #blackBoard1 {
+        margin: 10% 0 0 15%;
+        display: inline-block;
+        background: chartreuse;
+        width: 550px;
+        height: 250px;
+    }
+    
+    #blackBoard2 {
+        margin: 10% 0 0 15%;
+        position: relative;
+        background: chartreuse;
+        width: 550px;
+        height: 250px;
+    }
+    
+    ul {
+        list-style: none;
+    }

@@ -1,0 +1,24 @@
+.chat-list {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 550px !important;
+}
+
+textarea {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+.chatScreen {
+    position: absolute;
+    background: blue;
+    width: 250px;
+    height: 250px;
+}
+
+.chatScreen p {
+    color: white;
+}

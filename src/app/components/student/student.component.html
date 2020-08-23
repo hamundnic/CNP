@@ -1,0 +1,103 @@
+<div class="flex-container">
+    <!--chat Row -->
+    <!--<ul class="student-list" *ngIf=" Obs$  |async">
+        <li *ngFor="let item of Obs$  | async;let i = index;trackBy:trackByFn">
+            <a>
+                <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+                <div class="chat-content">
+                    <h6>{{i}}-{{item[i]['name'] |json }}</h6>
+                </div>
+
+            </a>
+
+        </li>
+
+    </ul>-->
+
+    <!-- <li class="reverse">
+            <a>
+                <div class="chat-content">
+                    <h6>Steave Doe</h6>
+
+                </div>
+                <div class="chat-img"><img src="./../../../assets/img/2.jpg" alt="user" /></div>
+
+            </a>
+
+        </li>
+
+        <li>
+            <a>
+                <div class="chat-img"><img src="./../../../assets/img/about.jpg" alt="user" /></div>
+                <div class="chat-content">
+                    <h6>James Anderson</h6>
+
+                </div>
+
+            </a>
+
+        </li>-->
+    <!--chat Row -->
+
+    <!--</ul>-->
+    <!-- <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="30" class="listContainer">
+        <ul class="student-list" *ngIf="dataChats">
+            <li *cdkVirtualFor="let item of dataChats;let i = index;trackBy:trackByFn">
+
+                <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+                <div class="chat-content">
+
+                    <h6>{{i}}-{{item[i]['name'] | json }}</h6>
+                </div>
+
+
+            </li>
+        </ul>
+
+
+
+    </cdk-virtual-scroll-viewport>-->
+    <!--</div>
+    <div *ngFor='let item of( myObservableArray | async);let i = index;'>
+        <p *ngIf="myObservableArray | async">{{item['name'] |json}}</p>
+
+    </div>-->
+    <ul>
+        <li *ngFor='let item of( myObservableArray | async);let i = index;let odd = odd,let even =even'>
+            <a *ngIf="odd" [class.student-list]="odd">
+                <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+                <div class="chat-content">
+                    <h6 *ngIf="myObservableArray | async">{{item['name'] |json}}</h6>
+
+                </div>
+
+            </a>
+            <a *ngIf="even" [class.reverse]="even">
+                <div class="chat-content">
+                    <h6 *ngIf="myObservableArray | async">{{item['name'] |json}}</h6>
+
+
+                </div>
+                <div class="chat-img"><img src="./../../../assets/img/2.jpg" alt="user" /></div>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+    <!-- <ul class="student-list" *ngIf="myObservableArray | async">
+        <li *ngFor="let item of myObservableArray | async;let i = index;trackBy:trackByFn">
+            <a>
+                <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+                <div class="chat-content">
+                    <h6>{{i}}-{{item ['name']|json }}</h6>
+                </div>
+
+            </a>
+
+        </li>
+    </ul>-->
+</div>

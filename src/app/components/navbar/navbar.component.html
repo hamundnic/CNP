@@ -14,16 +14,39 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['contact']">Contacto</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['school']">Escuela Virtual</a>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin">
+                <a class="nav-link" [routerLink]="['admin']" *ngIf="isAdminLogin">Administracion</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isHhrrLoding">
+                <a class="nav-link" [routerLink]="['hhrr']" *ngIf="isAdminLogin || isHhrrLoding">Recursos Humanos</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isHhrrLoding || isSvision">
+                <a class="nav-link" [routerLink]="['svision']" *ngIf="isAdminLogin || isHhrrLoding || isSvision">Direcion  Academica</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isHhrrLoding || isSvision || isTeacher">
+                <a class="nav-link" [routerLink]="['teacher']" *ngIf="isAdminLogin || isHhrrLoding || isSvision || isTeacher ">Profesores</a>
+            </li>
+
+            <a class="nav-link" [routerLink]="['school']" *ngIf="isAdminLogin || isSchoolLoging || isSvision">Escuela Virtual</a>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isSchoolLoging || isSvision">
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">
+                <a class="nav-link" [routerLink]="['support']" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">Soporte Tecnico</a>
             </li>
             <li class="registred">
                 <ul class="nav justify-content-end">
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link " [routerLink]="['login']">Entrar</a>
+                    <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">
+                        <a class="nav-link " [routerLink]="['settings']" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">Configuraciones</a>
                     </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link" [routerLink]="['register']">Registrarse</a>
+                    <li class="nav-item" routerLinkActive="active" *ngIf="!(isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher)">
+                        <a class="nav-link " [routerLink]="['login']" *ngIf="!(isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher)">Entrar</a>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin">
+                        <a class="nav-link" [routerLink]="['register']" *ngIf="isAdminLogin">Registrarse</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">
+                        <a class="nav-link " (click)="logOut()" *ngIf="isAdminLogin || isSchoolLoging || isHhrrLoding || isSvision || isTeacher">Salir</a>
                     </li>
 
                 </ul>

@@ -1,0 +1,68 @@
+ul {
+    list-style: none;
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+li {
+    width: auto;
+    border: 1px solid blue;
+    margin: 5px;
+}
+
+div.chat-img~.chat-content,
+.student-list {
+    display: inline-block;
+    background: red;
+    text-align: center;
+    align-content: center;
+    border: 1px solid black;
+}
+
+div.chat-img~.chat-content,
+.reverse .chat-content {
+    text-align: center;
+    background: blue;
+    align-content: center;
+    width: 50px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+h6 {
+    font-size: x-small;
+    font-weight: bold;
+    color: white;
+}
+
+.chat-time {
+    font-size: smaller;
+    font-weight: lighter;
+}
+
+div .chat-content {
+    text-align: center;
+}
+
+div .chat-img {
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.chat-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-img img {
+    background: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #00ffff;
+    align-self: center;
+    margin-left: 1px;
+}

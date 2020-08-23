@@ -1,0 +1,10 @@
+#blackBoard1 {
+    margin: 10%;
+    display: flex;
+    position: relative;
+    right: 3%;
+    display: flex;
+    background: chartreuse;
+    width: 750px;
+    height: 450px;
+}

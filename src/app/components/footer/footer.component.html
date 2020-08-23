@@ -2,6 +2,12 @@
     <div class="container text-center">
         &copy; HamundNic 2020
     </div>
+    <div class="status bg-dark">
+        <h6>Estado de el Servidor: </h6>
+        <span *ngIf="mainService.socketStatus" class="text-success"> En Linea</span>
+        <span *ngIf="!mainService.socketStatus" class="text-danger">Fuera de Linea</span>
+    </div>
+
 
 
 </footer>

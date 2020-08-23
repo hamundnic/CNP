@@ -1,0 +1,27 @@
+<ul>
+    <li class="student-list">
+        <a>
+            <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+            <div class="chat-content">
+                <h6>Steve Job</h6>
+
+            </div>
+
+        </a>
+
+
+    </li>
+    <li *ngIf="dataChat" class="reverse">
+        <a>
+            <div class="chat-content">
+                <h6>Bruce Barner</h6>
+                <p>{{dataChat['escribir'] | json}}</p>
+
+            </div>
+            <div class="chat-img"><img src="./../../../assets/img/2.jpg" alt="user" /></div>
+
+        </a>
+    </li>
+
+
+</ul>

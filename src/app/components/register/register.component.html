@@ -2,46 +2,141 @@
 
 
     <div class="row">
-        <h1 class="text-center ">Registrese para poder acceder a la Escuela Virtual</h1>
-    </div>
+        <h1 class="text-center text-center">Registrese para poder acceder a la Escuela Virtual</h1>
 
-    <div class="row">
-        <form>
+
+        <form autocomplete="off" (ngSubmit)="save(RegisterForma)" #RegisterForma="ngForm">
             <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Nombres</label>
+                    <input type="text" name="firstName" [class.is-invalid]="firstName.invalid && firstName.touched" [ngModel]="user.firstName" class="form-control" id="inputPassword4" required minlength=3 #firstName="ngModel">
+                    <small *ngIf="firstName.invalid && firstName.touched" class="form-text text-danger">Minimo 3 letras </small>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Apellidos</label>
+                    <input type="text" name="lastName" [ngModel]="user.lastName" [class.is-invalid]="lastName.invalid && lastName.touched" class="form-control" id="inputPassword4" required minlength=2 #lastName="ngModel">
+                    <small *ngIf="firstName.invalid && firstName.touched" class="form-text text-danger">Minimo 2 letras </small>
+                </div>
                 <div class="form-group col-md-12">
+
                     <label for="inputEmail4">Correo Electronico</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <input type="email" name="email" [ngModel]="user.email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="inputEmail4" placeholder="tu_correo@ejemplo.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" email required #email="ngModel">
+                    <small *ngIf="email.invalid && email.touched" class="form-text text-danger">correo no valido debe tener la forma miNombredeCorreo@midominio.com </small>
+
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Contraseña</label>
-                    <input type="password" class="form-control" id="inputPassword4">
+                    <input type="password" name="password" [ngModel]="user.password" class="form-control" id="inputPassword4" #password="ngModel" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Repetir Contraseña</label>
-                    <input type="repeatpassword" class="form-control" id="inputPassword4">
+                    <input type="password" [class.is-invalid]="repeatPassword.invalid && repeatPassword.touched" name="repeatPassword" [ngModel]="user.repeatPassword" class="form-control" id="inputPassword4" #repeatPassword="ngModel" required #repeat='ngModel'>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputAddress">Direccion De Domicilio</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" name="address" [ngModel]="user.address" class="form-control" id="inputAddress" placeholder="1234 Main St" #address="ngModel">
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Ciudad</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <input type="text" name="city" [ngModel]="user.city" class="form-control" id="inputCity" #city="ngModel">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="inputZip">Telefono</label>
-                    <input type="number" class="form-control" id="inputZip">
+                    <input type="number" name="tel." [ngModel]="telephone" class="form-control" id="inputZip" #telephone="ngModel">
                 </div>
             </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Tipos de Usuario</label>
+                    <select class="custom-select" name="UserType" [ngModel]="user.userType" #userType="ngModel">
+                    <option value="ADMIN">Administrador</option>
+                    <option value="RRHH">Recursos Humanos</option>
+                    <option value="SA">Supervisor Academico</option>
+                    <option value="TEACH">Profesor</option>
+                    <option value="STU">Estudiante</option>
+                    <option value="SUPPORT">Soporte Tecnico</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Tandas Educativas</label>
+                    <select class="custom-select" name="timeWork" [ngModel]="user.timeWork" #timeWork="ngModel">
+                    <option value="Mañana">Matutina</option>
+                    <option value="Tarde">Vespertina</option>
+                    <option value="Noche">Diurna</option>
+                    
+                  </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4">Nombre de la Escuela</label>
+                    <input type="text" name="schoolName" [ngModel]="user.schoolName" class="form-control" id="inputEmail4" required #schoolName="ngModel">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Curso</label>
+                    <select class="custom-select" name="grade" ngModel>
+                    <option value="Primero">Primero</option>
+                    <option value="Segundo">Segundo</option>
+                    <option value="Tercero">Tercero </option>
+                    <option value="Cuarto">Cuarto</option>
+                    <option value="Quinto">Quinto </option>
+                    <option value="Sexto">Sexto</option>
+                    <option value="Septimo">Septimo </option>
+                    <option value="Octavo">Octavo </option>
+                    <option value="1°">Primero Secundario</option>
+                    <option value="2°">Segundo Secundario</option>
+                    <option value="3°">Tercero Secundario</option>
+                    <option value="4°">Cuarto Secundario</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Sección de Aula</label>
+                    <!--<input type="text" name="roomLetter"  class="form-control" id="inputEmail4" placeholder="por favor escriba la sección del aula Ejemplo 2-A (segundo A)" required #roonLetter="ngModel">-->
+                    <select class="custom-select" name="roomLetter" [ngModel]="user.roomLetter" required #roonLetter="ngModel">
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C </option>
+                        <option value="d">D</option>
+                        <option value="e">E </option>
+                        <option value="f">F</option>
+                        <option value="g">G </option>
+                        <option value="h">H </option>
+                        <option value="i">I</option>
+                        <option value="j">J</option>
+                        <option value="K">K</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="N">N</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                        <option value="R">R</option>
+                        <option value="S">S</option>
+                        <option value="T">T</option>
+                        <option value="U">U</option>
+                        <option value="V">V</option>
+                        <option value="W">W</option>
+                        <option value="X">X</option>
+                        <option value="Y">Y</option>
+                        <option value="Z">Z</option>
+                      </select>
+                </div>
+            </div>
+
+
+
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <input class="form-check-input" name="agree" [ngModel]="user.agree" type="checkbox" id="gridCheck" #agree="ngModel">
                     <label class="form-check-label" for="gridCheck">
-          Estas deacuerdo con las Politicas de la Institucion.
+          Estas deacuerdo con las <a [routerLink]="['politics']">Politicas de la Institucion</a>.
+          <router-outlet></router-outlet>
         </label>
                 </div>
             </div>

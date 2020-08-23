@@ -1,24 +1,43 @@
 <div class="flex-container">
     <div class="row">
-        <div class="col col-sm-8 board">
-            <div class="video">
-                <video autoplay play></video>
+        <div class="col col-sm-9 board">
+            <div class="row">
+                <div>
+
+                </div>
+                <div clas="col col-sm6">
+                    <div class="video">
+                        <video autoplay play></video>
+                        <button *ngIf="isOpen" class="btn btn-success openCamera" (click)="openVideo($event)">Abrir Camara</button>
+                        <button *ngIf="!isOpen" class="btn btn-danger openCamera" (click)="openVideo($event)">Cerrar Camara</button>
+                    </div>
+                </div>
+                <div clas="col col-sm6">
+                    <div class="row">
+                        <div class="blackBoard">
+                            <ul>
+                                <li>
+                                    <app-blackboard></app-blackboard>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row cardSchool">
+                    <app-student [dataChat]="chatEvents"></app-student>
+                </div>
             </div>
 
-            <button class="btn btn-success open" (click)="openVideo($event)">Open camera</button>
+
+
         </div>
-        <div class="col col-sm-4 chat">
-            chat
-            <div class="screen">
-                <p style="margin: 5px;">{{escribir}}</p>
-            </div>
-            <div>
-                <label class="input-group-text">Escribe:
-                <input class="form-control" [(ngModel)]="escribir" placeholder="name"/>
-              </label>
-            </div>
-
+        <div class="col col-sm-3 chat">
+            <app-chat-screen (data)="chatEvent($event)"></app-chat-screen>
         </div>
-
-    </div>
-</div>
