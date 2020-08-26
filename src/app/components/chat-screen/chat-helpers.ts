@@ -7,7 +7,7 @@ const room = params.get("room");
 let divUsuarios = $("#divUsuarios");
 let formSend = $("#formSend");
 let txtMessage = $("#txtMessage");
-let divChatbox = document.getElementById("#divChatbox");
+let divChatbox = $("#divChatbox");
 
 // Funciones para renderizar usuarios
 export function UserRendering(people: any) {
@@ -21,7 +21,7 @@ let html = '';
     "</span></a>";
   html += "</li>";
 
-/*  for (let i = 0; i < people.length; i++) {
+ for (let i = 0; i < people.length; i++) {
     html += "<li>";
     html +=
       '<a data-id="' +
@@ -30,11 +30,11 @@ let html = '';
       people[i].name +
       ' <small class="text-success">online</small></span></a>';
     html += "</li>";
-  }*/
+  }
  divChatbox.append(html);
 }
 
-/*export function renderingMessage(message: string, mySelf: boolean) {
+export function renderingMessage(message: string, mySelf: boolean) {
   let html = "";
   let date = new Date(message['date']);
   let hour = date.getHours() + ":" + date.getMinutes();
@@ -106,7 +106,7 @@ formSend.on("submit", function (e) {
   if (txtMessage.val().trim().length === 0) {
     return;
   }
-  /*socket.emit(
+  socket.emit(
     "createMessage",
     {
       name,
@@ -121,4 +121,4 @@ formSend.on("submit", function (e) {
   );
 
   console.log("submit",e);
-});*/
+});

@@ -19,9 +19,10 @@ import { pluck } from "rxjs/operators";
 export class SchoolComponent implements OnInit, OnDestroy {
   schoolCamera = new SchoolCamera();
   isOpen:boolean = true;
-  chatEvents: any = {};
-  Obs$ = new Observable();
-  ObsSubc: Subscription = new Subscription();
+  chatEvents: any = {};//take are the users connected
+  chatMessage: any=[]=[];
+  Obs$: Observable<any>;
+  ObsSubc:Subscription = new Subscription();
   constructor(
     private mainService: MainServicesService,
     private changeDetector: ChangeDetectorRef
@@ -41,14 +42,20 @@ export class SchoolComponent implements OnInit, OnDestroy {
   chatEvent(e: Event) {
     console.log(e);
 
-    this.Obs$ = new Observable((observer) => {
+     this.Obs$ = new Observable((observer) => {
       observer.next(e);
     });
 
-    this.Obs$.subscribe((user) => this.chatEvents = user);
+    this.ObsSubc =this.Obs$.subscribe((user) => this.chatEvents = user);
 
     console.log("chatEvent", this.chatEvents);
   }
 
-  ngOnDestroy() {}
+
+
+  ngOnDestroy() {
+
+    this.ObsSubc.unsubscribe();
+    this.chatEvents = {};
+  }
 }

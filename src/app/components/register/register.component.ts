@@ -27,12 +27,11 @@ user: Register={
 };
   constructor(public mainService: MainServicesService) { }
 
-  ngOnInit(): void {
-    this.mainService.getState().subscribe(paises=>{
-      console.log(paises);
-    });
-  }
-save( forma: NgForm){
+  ngOnInit(): void {}
+
+
+
+  save( forma: NgForm){
 
   if(forma.invalid){
 

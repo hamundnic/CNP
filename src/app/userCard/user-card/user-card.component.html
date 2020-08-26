@@ -1,27 +1,56 @@
-<ul>
-    <li class="student-list">
-        <a>
-            <div class="chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
-            <div class="chat-content">
-                <h6>Steve Job</h6>
-
+<ul *ngFor="let user of( myObservableArray | async)">
+    <li *ngIf="(user.name ==='Administrador')&& user.other">
+        <div class="row">
+            <div *ngIf=" user.joined" class="alert alert-info" role="alert">
+                {{user['message'] | json}}
+            </div>
+            <div *ngIf=" !user.joined" class="alert alert-danger" role="alert">
+                {{user['message']| json}}
             </div>
 
-        </a>
-
+        </div>
 
     </li>
-    <li *ngIf="dataChat" class="reverse">
-        <a>
-            <div class="chat-content">
-                <h6>Bruce Barner</h6>
-                <p>{{dataChat['escribir'] | json}}</p>
+    <li>
+        <div *ngIf=" user.mySelf && !(user.name ==='Administrador')" class="student-list">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-6 chat-img"><img src="./../../../assets/img/1.jpg" alt="user" /></div>
+                <div class="col-md-3 chat-content-1">
+                    <h6>{{user['name'] | json}}</h6>
+
+                </div>
+                <div class="col-md-8 col-md-offset-4 dialog">
+                    <p>{{user['message']['escribir'] | json}}</p>
+
+
+                </div>
+                <div class="col-md-8 col-md-pull-4">
+                    <small class="badge badge-primary chat-time">{{user['date'] |date }}</small>
+
+                </div>
 
             </div>
-            <div class="chat-img"><img src="./../../../assets/img/2.jpg" alt="user" /></div>
+        </div>
 
-        </a>
+        <div *ngIf=" user.other && !(user.name ==='Administrador')" class="reverse text-right">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-3 chat-content">
+                    <h6>{{user['name'] | json}}</h6>
+
+                </div>
+                <div class="col-md-offset-1 col-md-6  chat-img"><img src="./../../../assets/img/2.jpg" alt="user" /></div>
+                <div class="col-md-8 col-md-offset-4 dialog1">
+                    <p>{{user['message']['escribir'] | json}}</p>
+
+
+                </div>
+                <div class="col-md-8 col-md-push-4">
+                    <small class="badge badge-primary chat-time">{{user['date'] |date }}</small>
+
+                </div>
+            </div>
+
+        </div>
     </li>
-
 
 </ul>

@@ -2,14 +2,16 @@
     <div class="row">
         <div class="col col-sm-9 board">
             <div class="row">
-                <div>
-
-                </div>
+                <div></div>
                 <div clas="col col-sm6">
                     <div class="video">
                         <video autoplay play></video>
-                        <button *ngIf="isOpen" class="btn btn-success openCamera" (click)="openVideo($event)">Abrir Camara</button>
-                        <button *ngIf="!isOpen" class="btn btn-danger openCamera" (click)="openVideo($event)">Cerrar Camara</button>
+                        <button *ngIf="isOpen" class="btn btn-success openCamera" (click)="openVideo($event)">
+              Abrir Camara
+            </button>
+                        <button *ngIf="!isOpen" class="btn btn-danger openCamera" (click)="openVideo($event)">
+              Cerrar Camara
+            </button>
                     </div>
                 </div>
                 <div clas="col col-sm6">
@@ -19,25 +21,18 @@
                                 <li>
                                     <app-blackboard></app-blackboard>
                                 </li>
-
                             </ul>
-
-
                         </div>
-
                     </div>
-
-
                 </div>
 
                 <div class="row cardSchool">
                     <app-student [dataChat]="chatEvents"></app-student>
                 </div>
             </div>
-
-
-
         </div>
         <div class="col col-sm-3 chat">
             <app-chat-screen (data)="chatEvent($event)"></app-chat-screen>
         </div>
+    </div>
+</div>

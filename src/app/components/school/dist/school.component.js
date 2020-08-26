@@ -16,8 +16,8 @@ var SchoolComponent = /** @class */ (function () {
         this.changeDetector = changeDetector;
         this.schoolCamera = new schoolCamera_1.SchoolCamera();
         this.isOpen = true;
-        this.chatEvents = {};
-        this.Obs$ = new rxjs_1.Observable();
+        this.chatEvents = {}; //take are the users connected
+        this.chatMessage = [];
         this.ObsSubc = new rxjs_1.Subscription();
     }
     SchoolComponent.prototype.ngOnInit = function () { };
@@ -36,10 +36,13 @@ var SchoolComponent = /** @class */ (function () {
         this.Obs$ = new rxjs_1.Observable(function (observer) {
             observer.next(e);
         });
-        this.Obs$.subscribe(function (user) { return _this.chatEvents = user; });
+        this.ObsSubc = this.Obs$.subscribe(function (user) { return _this.chatEvents = user; });
         console.log("chatEvent", this.chatEvents);
     };
-    SchoolComponent.prototype.ngOnDestroy = function () { };
+    SchoolComponent.prototype.ngOnDestroy = function () {
+        this.ObsSubc.unsubscribe();
+        this.chatEvents = {};
+    };
     SchoolComponent = __decorate([
         core_1.Component({
             selector: "app-school",

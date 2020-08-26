@@ -5,8 +5,7 @@ import {
   OnDestroy,
   ChangeDetectorRef,
 } from "@angular/core";
-import { Observable, Subject } from "rxjs";
-import { MainServicesService } from "../../services/main-services.service";
+import { Observable, Subject, Subscription,Unsubscribable } from 'rxjs';
 
 @Component({
   selector: "app-student",
@@ -17,33 +16,29 @@ export class StudentComponent implements OnInit, OnDestroy {
   @Input() dataChat: any;
   myObservableArray: Observable<any>;
   data: Subject<any> = new Subject<any>();
-  Obs$: Observable<any>;
-
+ subscription: Subscription =new Subscription();
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private mainService: MainServicesService
   ) {
     this.getDataChat();
   }
 
   ngOnInit() {}
 
-  dataCh() {
-    this.Obs$ = new Observable<any[]>((observer) => {
-      observer.next(this.dataChat);
-    });
 
-    return this.Obs$;
-  }
   getDataChat() {
     if (!this.myObservableArray) {
-      this.myObservableArray = this.getData();
+  
+    this.myObservableArray = this.getData();
+    this.subscription.add(this.myObservableArray.subscribe());
+   
     }
   }
   getData(): Subject<any> {
     const interval = setInterval(() => {
-      this.data.next(this.dataChat);
-      this.changeDetector.detectChanges();
+    this.data.next(this.dataChat);
+    this.changeDetector.detectChanges();
+    this.subscription.add(this.data.subscribe());
     }, 500);
     () => clearInterval(interval);
     return this.data;
@@ -54,5 +49,9 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
  
-  ngOnDestroy() {}
+  ngOnDestroy() {
+   
+   this.subscription.unsubscribe();
+
+  }
 }

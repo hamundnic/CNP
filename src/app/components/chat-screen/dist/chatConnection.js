@@ -2,32 +2,30 @@
 // tslint:disable-next-line: typedef
 exports.__esModule = true;
 exports.chatConnection = void 0;
-//import {UserRendering, renderingMessage,scrollBottom} from './chat-helpers';
-function chatConnection(user, data, socket) {
+function chatConnection(user, data, socket, messages) {
     if (user) {
         socket.on("connect", function () {
             socket.emit("enterToRoom", user, function (resp) {
                 console.log("Usuarios Conectados", resp);
                 data.emit(resp);
-                // UserRendering(resp);
             });
             console.log("Conectado al servidor");
         });
         // escuchar
         // tslint:disable-next-line: typedef
-        socket.on("disconnect", function () {
+        socket.on("disconnect", function (message) {
+            console.log("disconnect", message);
             console.log("Perdimos conexión con el servidor");
         });
-        // Escuchar información
+        // Escuchar información del servidor
         socket.on("createMessage", function (message) {
-            console.log("Servidor:", message);
-            // renderingMessage(message, false);
+            messages.push(message);
             // scrollBottom();
         });
         // listen users's changes
         //when someone left the Room
         socket.on("peopleList", function (people) {
-            console.log(people);
+            console.log("peopleList", people);
             data.emit(people);
         });
         // private Message
